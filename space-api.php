@@ -10,19 +10,18 @@
  *
  * @link              https://https://github.com/maker-space-experimenta/space-api-wordpress-plugin
  * @since             1.0.0
- * @package           ms_devices
+ * @package           wp_space_api
  *
  * @wordpress-plugin
  * Plugin Name:       Space API
  * Plugin URI:        https://github.com/maker-space-experimenta/space-api-wordpress-plugin
  * Description:       Plugin to provide a space api endpoint for your makerspace, Fablab, Hackspace, ...
  * Version:           1.0.0
- * Author:            Jonathan Günz
+ * Author:            harmoniemand
  * Author URI:        https://hmnd.de
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       ms-device-management
- * Domain Path:       /languages
+ * License:           MIT
+ * License URI:       https://github.com/maker-space-experimenta/space-api-wordpress-plugin/blob/main/LICENSE
+ * Text Domain:       wp-space-api
  */
 
 // If this file is called directly, abort.
