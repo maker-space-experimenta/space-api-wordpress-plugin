@@ -1,0 +1,17 @@
+{
+    "name": "space-api-wordpress-plugin",
+    "version": "1.0.0",
+    "description": "space-api-wordpress-plugin",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/maker-space-experimenta/space-api-wordpress-plugin.git"
+    },
+    "author": "harmoniemand",
+    "license": "MIT",
+    "homepage": "https://github.com/maker-space-experimenta/space-api-wordpress-plugin",
+    "dependencies": {
+        "@clr/icons": "^2.4.2",
+        "@webcomponents/custom-elements": "^1.0.0",
+        "bootstrap": "^4.4.1"
+    }
+}

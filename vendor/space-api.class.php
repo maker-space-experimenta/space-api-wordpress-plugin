@@ -89,15 +89,15 @@ if (!class_exists('SpaceAPI')) {
 
         public function load_styles()
         {
-            wp_enqueue_style('css-bootstrap', plugins_url('/../vendor/bootstrap.min.css', __FILE__));
-			wp_enqueue_style('css-clr-icons', plugins_url('/../vendor/clr-icons.min.css', __FILE__));
+            wp_enqueue_style('css-bootstrap', plugins_url('/../vendor/bootstrap/dist/css/bootstrap.min.css', __FILE__));
+			wp_enqueue_style('css-clr-icons', plugins_url('/../vendor/@clr/icons/clr-icons.min.css', __FILE__));
 
-			wp_enqueue_script('js-custom-elements', plugins_url('/../vendor/custom-elements.min.js', __FILE__));
-			wp_enqueue_script('js-clr-icons', plugins_url('/../vendor/clr-icons.min.js', __FILE__));
-			wp_enqueue_script('js-bootstrap-util', plugins_url('/../vendor/util.js', __FILE__));
-			wp_enqueue_script('js-bootstrap-collapse', plugins_url('/../vendor/collapse.js', __FILE__));
+			wp_enqueue_script('js-custom-elements', plugins_url('/../vendor/@webcomponents/custom-elements/custom-elements.min.js', __FILE__));
+			wp_enqueue_script('js-clr-icons', plugins_url('/../vendor/@clr/icons/clr-icons.min.js', __FILE__));
+			wp_enqueue_script('js-bootstrap-util', plugins_url('/../vendor/bootstrap/js/dist/util.js', __FILE__));
+			wp_enqueue_script('js-bootstrap-collapse', plugins_url('/../vendor/bootstrap/js/dist/collapse.js', __FILE__));
 
-			// wp_enqueue_style('css-custom-styles', plugins_url('styles/styles.css', __FILE__));
+			wp_enqueue_style('css-custom-styles', plugins_url('styles/styles.css', __FILE__));
         }
 
         public static function activate()
