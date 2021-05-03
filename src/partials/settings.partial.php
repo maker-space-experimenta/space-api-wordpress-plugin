@@ -3,7 +3,7 @@
 $saved = false;
 
 if (isset($_POST['space_api_settings_form'])) {
-    
+
     $space = (object) array(
         "api" => "0.13",
         "api_compatibility" => ["14"],
@@ -36,15 +36,24 @@ if (isset($_POST['space_api_settings_form'])) {
     );
 
     update_option("space_api_config", $space);
+    update_option("space_api_toggle_endpoint_token", sanitize_text_field($_POST["space_api_toggle_endpoint_token"]));
 
-    
+
     $saved = true;
-
 }
 
 
 
 $space = get_option("space_api_config");
+$space_api_toggle_endpoint_token = get_option("space_api_toggle_endpoint_token");
+
+if ($space_api_toggle_endpoint_token == false) {
+    if (function_exists('com_create_guid') === true) {
+        $space_api_toggle_endpoint_token = trim(com_create_guid(), '{}');
+    }
+
+    $space_api_toggle_endpoint_token = sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+}
 
 if ($space == false) {
 
@@ -202,6 +211,38 @@ if ($space == false) {
                         <label for="first_name" class="col-sm-2 col-form-label"><?php echo __('Twitter') ?></label>
                         <div class="col-sm-10">
                             <input type="text" name="contact_twitter" id="contact_twitter" class="form-control-plaintext" value="<?php echo $space->contact->twitter ?>">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="card wp-settings" style="border-radius: 0; padding: 8px 12px; max-width: 100%;">
+                <div class="card-body">
+
+                    <div style="display: flex;">
+                        <h5 class="card-title"><?php echo __('Toggle Endpoint') ?></h5>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="first_name" class="col-sm-2 col-form-label"><?php echo __('Token') ?></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="space_api_toggle_endpoint_token" id="space_api_toggle_endpoint_token" class="form-control-plaintext" value="<?php echo $space_api_toggle_endpoint_token ?>">
+                        </div>
+                    </div>
+
+                    <?php
+
+                    $endpoint_url = get_bloginfo("url") . "/wp-json/spaceapi/v14/toggle/" . $space_api_toggle_endpoint_token;
+
+                    ?>
+
+                    <div class="form-group row">
+                        <label for="first_name" class="col-sm-2 col-form-label"><?php echo __('Endpoint URL') ?></label>
+                        <div class="col-sm-10">
+                            <input type="text" disabled class="form-control-plaintext" value="<?php echo $endpoint_url ?>">
                         </div>
                     </div>
 

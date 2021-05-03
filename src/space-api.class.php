@@ -41,13 +41,8 @@ if (!class_exists('SpaceAPI')) {
 
             add_action('rest_api_init', array($this, "register_api_route"));
 
+            add_action( 'wp_dashboard_setup', array($this, 'add_dashboard_widgets') );
 
-            // require_once dirname(__FILE__) . '/_Debug/debug.controller.php';
-            // $debugController = DebugController::instance();
-            // $debugController->register();
-
-            // add_action('init', array($this, 'save_forms'));
-            // add_action('admin_enqueue_scripts', array($this, 'load_styles'));
             add_action('admin_menu', array($this, "registerAdminMenu"));
         }
 
@@ -65,6 +60,25 @@ if (!class_exists('SpaceAPI')) {
                 //     return true;
                 // }
             ));
+            register_rest_route('spaceapi/v14', '/toggle/(?P<token>.+)', array(
+                'methods' => 'GET',
+                'callback' => array("SpaceApiJson", "Toggle"),
+                // 'permission_callback' => function () {
+                //     return true;
+                // }
+            ));
+        }
+
+        public function render_dashboard_widget_space_api () {
+            include dirname(__FILE__) . '/partials/widget.partial.php';
+        }
+        public function add_dashboard_widgets()
+        {
+            wp_add_dashboard_widget(
+                'space-api-toggle',         // Widget slug.
+                'Space API',         // Title.
+                array($this, 'render_dashboard_widget_space_api') // Display function.
+            );
         }
 
 
