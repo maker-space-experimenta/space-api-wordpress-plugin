@@ -61,7 +61,7 @@ if (!class_exists('SpaceAPI')) {
                 // }
             ));
             register_rest_route('spaceapi/v14', '/toggle/(?P<token>.+)', array(
-                'methods' => 'GET',
+                'methods' => 'POST',
                 'callback' => array("SpaceApiJson", "Toggle"),
                 // 'permission_callback' => function () {
                 //     return true;

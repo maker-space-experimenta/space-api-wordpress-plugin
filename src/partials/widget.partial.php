@@ -14,7 +14,7 @@ Space API is not configured. Please go to admin interface, switch to settings an
 
 <script>
     function toggle_space_api() {
-        alert("toggle");
+        
     }
 </script>
 <button type="button" onclick="toggle_space_api()" class="btn btn-primary btn-sm" style="background: #0071a1;"><?php echo __("open space") ?></button>
