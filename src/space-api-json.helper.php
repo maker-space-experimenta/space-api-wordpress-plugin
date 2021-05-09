@@ -29,6 +29,7 @@ if (!class_exists('SpaceApiJson')) {
 
             $response = new WP_REST_Response($spaceApiConfig, 200);
             $response->set_headers(['Content-Type' => 'application/json']);
+            $response->set_headers(['access-control-allow-origin' => '*']);
 
             return $response;
         }
